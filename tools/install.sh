@@ -19,6 +19,20 @@ version(){
     [[ $2 != "$h" && $2 != "$t" ]]
 }
 
+check_webserver(){
+    if [[ type "httpd" > /dev/null 2>&1 || type "apache2" > /dev/null 2>&1 ]]; then
+        return 1
+    elif type "nginx" > /dev/null 2>&1; then
+        return 2
+    else
+        return 0
+    fi
+}
+
+check_php_module(){
+    MODULE=$1
+
+}
 #Find OS
  if cat /etc/*release | grep ^NAME | grep CentOS; then
     OS="CentOS"
@@ -50,10 +64,10 @@ echo "The script will attempt to install all of the required packages and config
 #fi
 
 #check for webserver
-WEBSERVER=
-if [[ type "httpd" > /dev/null 2>&1 || type "apache2" > /dev/null 2>&1 ]]; then
+check_webserver
+if [[ $? == 1 ]]; then
     WEBSERVER="apache"
-elif type "nginx" > /dev/null 2>&1; then
+elif [[ $? == 2 ]]; then
     WEBSERVER="nginx"
 else
     echo "We're unable to find your webserver.  We support Apache and Nginx";echo;
