@@ -56,7 +56,7 @@ check_php_module(){
 echo "This is the install script for MailWatch";echo;
 echo "The script will attempt to install all of the required packages and configure them for you";echo;
 
-check if mailscanner is installed
+#check if mailscanner is installed
 if [ ! -f "/etc/Mailscanner/Mailscanner.conf" ]; then
     echo "MailScanner config is missing";echo;
     echo "MailScanner must be installed before installing MailWatch";echo;
