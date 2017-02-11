@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 REQPHPMODULES=()
 REQPHPMODULES+=('mysql')
 REQPHPMODULES+=('gd')
@@ -31,7 +31,7 @@ check_webserver(){
 
 check_php_module(){
     MODULE=$1
-
+#NOT FINISHED YET TODO::finish implementing this function
 }
 #Find OS
  if cat /etc/*release | grep ^NAME | grep CentOS; then
@@ -56,12 +56,12 @@ check_php_module(){
 echo "This is the install script for MailWatch";echo;
 echo "The script will attempt to install all of the required packages and configure them for you";echo;
 
-##check if mailscanner is installed
-#if [ ! -f "/etc/Mailscanner/Mailscanner.conf" ]; then
-#    echo "MailScanner config is missing";echo;
-#    echo "MailScanner must be installed before installing MailWatch";echo;
-#    echo "Aborting...";exit 1;
-#fi
+check if mailscanner is installed
+if [ ! -f "/etc/Mailscanner/Mailscanner.conf" ]; then
+    echo "MailScanner config is missing";echo;
+    echo "MailScanner must be installed before installing MailWatch";echo;
+    echo "Aborting...";exit 1;
+fi
 
 #check for webserver
 check_webserver
@@ -137,41 +137,7 @@ else
 fi
 
 
-#echo "Do you wish me to configure your webserver?";echo;
-#echo "1 - Apache"
-#echo "2 - Nginx"
-#echo "N - do not install or configure"
-#echo;
-#read -r -p "Select Webserver: " response
-#if [[ $response =~ ^([nN][oO])$ ]]; then
-#    #do not install or configure webserver
-#    WEBSERVER=
-#elif [ $response == 1 ]; then
-#    #Apache
-#    WEBSERVER="apache"
-#elif [ $response == 2 ]; then
-#    #Nginx
-#    WEBSERVER="nginx"
-#else
-#    WEBSERVER=
-#fi
-#
-#echo "Checking for required packages";echo;
-##check if mailscanner is installed
-#if [ ! -f "/etc/Mailscanner/Mailscanner.conf" ]; then
-#    echo "MailScanner config is missing";echo;
-#    echo "MailScanner must be installed before installing MailWatch";echo;
-#    echo "Aborting...";exit 1;
-#fi
-#
-##required packages
-#if [ $WEBSERVER == "apache" ]; then
-#    YUMPACKAGES="httpd mysql-server mysql-client php mod_php php-gd php-mysql php-mbstring";
-#    APTPACKAGES="apache2 libapache2-mod-php mysql php5 php5-gd php5-mysql"
-#elif [ $WEBSERVER == "nginx" ]; then
-#    YUMPACKAGES="nginx mysql-server mysql-client php php-fpm php-gd php-mysql php-mbstring";
-#    APTPACKAGES="nginx mysql php5 php5-fpm php5-gd php5-mysql"
-#fi
+
 
 
 
