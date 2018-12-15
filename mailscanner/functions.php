@@ -55,7 +55,8 @@ $params = session_get_cookie_params();
 if (defined('SESSION_NAME')) {
     session_name(SESSION_NAME);
 }
-session_set_cookie_params(0, $params['path'], $params['domain'], $session_cookie_secure, true);
+//TODO:: Fix session conflict - should be handled by symfony
+//session_set_cookie_params(0, $params['path'], $params['domain'], $session_cookie_secure, true);
 
 \MailWatch\Translation::configureLanguage();
 
