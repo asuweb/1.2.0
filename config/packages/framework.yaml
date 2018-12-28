@@ -16,4 +16,6 @@ framework:
         log: true
 
     templating:
-        engines: ['php']
+        engines: ['php', 'twig']
+
+    form: ~

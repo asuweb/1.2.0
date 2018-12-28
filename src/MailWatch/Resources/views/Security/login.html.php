@@ -107,7 +107,7 @@ echo '<!doctype html>
         </form>';
     if (defined('PWD_RESET') && PWD_RESET === true) {
         echo '
-        <div class="pwdresetButton"><a href="password_reset.php?stage=1">' . \MailWatch\Translation::__('forgottenpwd01') . '</a></div>';
+        <div class="pwdresetButton"><a href="'.$view['router']->path('password-reset',array('stage' => '1')).'">' . \MailWatch\Translation::__('forgottenpwd01') . '</a></div>';
     }
 echo '
     </div>
